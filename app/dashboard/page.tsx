@@ -19,7 +19,7 @@ export default function Dashboard() {
       </h1>
 
       <p className="mt-4">
-        Witaj {user || "admin"} 👋
+        Witaj {user} 👋
       </p>
 
       <button

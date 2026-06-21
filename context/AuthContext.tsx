@@ -4,6 +4,7 @@ import {
   createContext,
   useContext,
   useState,
+  useEffect,
   ReactNode,
 } from "react";
 
@@ -12,7 +13,7 @@ type AuthContextType = {
   login: (
     username: string,
     password: string
-  ) => boolean;
+  ) => Promise<boolean>;
   logout: () => void;
 };
 
@@ -27,22 +28,54 @@ export function AuthProvider({
   const [user, setUser] =
     useState<string | null>(null);
 
-  const login = (
+    useEffect(() => {
+      const savedUser =
+        localStorage.getItem("user");
+    
+      if (savedUser) {
+        setUser(savedUser);
+      }
+    }, []);
+
+  const login = async (
     username: string,
     password: string
   ) => {
-    console.log("LOGIN:", username);
-console.log("PASSWORD:", password);
-    if (
-      username === "Admin" &&
-      password === "haslo123"
-    ) {
-      setUser(username);
-      localStorage.setItem("user", username);
-      return true;
-    }
+    try {
+      const response = await fetch(
+        "/api/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type":
+              "application/json",
+          },
+          body: JSON.stringify({
+            username,
+            password,
+          }),
+        }
+      );
 
-    return false;
+      const data =
+        await response.json();
+
+      if (!response.ok) {
+        return false;
+      }
+
+      setUser(data.user.username);
+
+      localStorage.setItem(
+        "user",
+        data.user.username
+      );
+
+      return true;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
   };
 
   const logout = () => {
@@ -64,7 +97,8 @@ console.log("PASSWORD:", password);
 }
 
 export function useAuth() {
-  const context = useContext(AuthContext);
+  const context =
+    useContext(AuthContext);
 
   if (!context) {
     throw new Error(
