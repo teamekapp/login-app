@@ -36,3 +36,18 @@
  GET / 200 in 109ms (next.js: 8ms, application-code: 101ms)
  GET / 200 in 111ms (next.js: 7ms, application-code: 103ms)
  GET / 200 in 132ms (next.js: 12ms, application-code: 120ms)
+✓ Compiled in 571ms
+ GET /dashboard 200 in 1699ms (next.js: 129ms, application-code: 1570ms)
+ GET / 200 in 1986ms (next.js: 830ms, application-code: 1155ms)
+ GET / 200 in 55ms (next.js: 11ms, application-code: 44ms)
+ GET /dashboard 200 in 96ms (next.js: 14ms, application-code: 82ms)
+ GET / 200 in 78ms (next.js: 7ms, application-code: 71ms)
+✓ Compiled in 323ms
+ GET / 500 in 1100ms (next.js: 530ms, application-code: 569ms)
+✓ Compiled in 97ms
+ GET / 200 in 618ms (next.js: 79ms, application-code: 540ms)
+ GET / 200 in 667ms (next.js: 342ms, application-code: 325ms)
+ GET /dashboard 200 in 85ms (next.js: 5ms, application-code: 81ms)
+ GET / 200 in 68ms (next.js: 7ms, application-code: 61ms)
+ GET /dashboard 200 in 74ms (next.js: 3ms, application-code: 71ms)
+ GET / 200 in 50ms (next.js: 7ms, application-code: 43ms)

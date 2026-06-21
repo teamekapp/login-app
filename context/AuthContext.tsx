@@ -34,7 +34,7 @@ export function AuthProvider({
     console.log("LOGIN:", username);
 console.log("PASSWORD:", password);
     if (
-      username === "admin" &&
+      username === "Admin" &&
       password === "haslo123"
     ) {
       setUser(username);

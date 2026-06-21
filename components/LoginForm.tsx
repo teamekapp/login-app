@@ -18,15 +18,7 @@ export default function LoginForm() {
     useState("");
 
   const handleLogin = () => {
-    alert("Kliknięto Zaloguj");
-    const success =
-      login(username, password);
-
-    if (success) {
-      router.push("/dashboard");
-    } else {
-      setError("Błędny login lub hasło");
-    }
+    router.push("/dashboard");
   };
 
   return (
